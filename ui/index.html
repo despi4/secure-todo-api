@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Task Manager UI</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div>
+          <h1>Task Manager</h1>
+          <p class="muted">UI for your Secure Task Management API</p>
+        </div>
+
+        <div class="api-box">
+          <label class="muted">API Base URL</label>
+          <div class="row">
+            <input id="apiBase" type="text" value="http://localhost:3000" />
+            <button id="saveApi" class="btn">Save</button>
+          </div>
+          <div class="muted small">Uses HttpOnly cookie via <code>credentials: "include"</code></div>
+        </div>
+      </header>
+
+      <main class="grid">
+        <!-- Auth -->
+        <section class="card">
+          <div class="card-title">
+            <h2>Auth</h2>
+            <span id="authState" class="pill">Unknown</span>
+          </div>
+
+          <div class="split">
+            <div>
+              <h3>Register</h3>
+              <div class="form">
+                <input id="regEmail" type="email" placeholder="email" />
+                <input id="regPass" type="password" placeholder="password (min 8)" />
+                <button id="btnRegister" class="btn primary">Register</button>
+              </div>
+            </div>
+
+            <div>
+              <h3>Login</h3>
+              <div class="form">
+                <input id="logEmail" type="email" placeholder="email" />
+                <input id="logPass" type="password" placeholder="password" />
+                <button id="btnLogin" class="btn primary">Login</button>
+                <div class="row">
+                  <button id="btnMe" class="btn">Me</button>
+                  <button id="btnLogout" class="btn danger">Logout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <pre id="meBox" class="code">User info will appear here...</pre>
+        </section>
+
+        <!-- Create task -->
+        <section class="card">
+          <div class="card-title">
+            <h2>Create Task</h2>
+            <span class="muted small">Auth required</span>
+          </div>
+
+          <div class="form">
+            <input id="taskTitle" type="text" placeholder="title" />
+            <textarea id="taskDesc" placeholder="description"></textarea>
+            <button id="btnCreateTask" class="btn primary">Create</button>
+          </div>
+        </section>
+
+        <!-- My tasks -->
+        <section class="card span-2">
+          <div class="card-title">
+            <h2>My Tasks</h2>
+            <div class="row">
+              <button id="btnLoadTasks" class="btn">Reload</button>
+              <label class="row muted small">
+                <input id="hideCompleted" type="checkbox" />
+                hide completed
+              </label>
+            </div>
+          </div>
+
+          <div id="tasksList" class="tasks"></div>
+        </section>
+
+        <!-- Public task by ID -->
+        <section class="card span-2">
+          <div class="card-title">
+            <h2>Get Task by ID (Public)</h2>
+            <span class="muted small">Works without login if your API allows it</span>
+          </div>
+
+          <div class="row">
+            <input id="taskIdInput" type="text" placeholder="task id..." />
+            <button id="btnGetById" class="btn">Get</button>
+          </div>
+
+          <pre id="taskByIdBox" class="code">Task data will appear here...</pre>
+        </section>
+
+        <!-- Logs -->
+        <section class="card span-2">
+          <div class="card-title">
+            <h2>Logs</h2>
+            <button id="btnClearLogs" class="btn">Clear</button>
+          </div>
+          <pre id="logBox" class="code"></pre>
+        </section>
+      </main>
+
+      <footer class="footer muted small">
+        Tip: if cookies don’t work, check API CORS settings: <code>credentials: true</code> and correct <code>origin</code>.
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
