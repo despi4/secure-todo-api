@@ -1,0 +1,37 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env
+.env
+.env.*.local
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build / coverage
+dist/
+build/
+coverage/
+*.lcov
+
+# Runtime files
+*.pid
+*.seed
+*.log
+
+# Optional: uploads/temp
+tmp/
+uploads/
+
+# Docker (если используешь локальные volume-файлы/override)
+docker-compose.override.yml
+
+# Mongo local data (если вдруг делаешь локально папку для volume)
+mongo_data/
